@@ -1,7 +1,0 @@
-<p>Are you sure you want to delete Widget 1?</p>
-<form method="post" action"/widgets/1/delete" enctype="application/x-www-form-urlencoded">
-	<input type="hidden" value="delete" name="_method"/>
-	<p>
-		<input type="submit" name="submit" id="submit" value="Selete Widget 1"/>
-	</p>
-</form>

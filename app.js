@@ -30,7 +30,6 @@ app.configure('development', function() {
 	app.use(express.errorHandler({ showStack: true, dumpExceptions: true }));
 });
 
-app.get('/', routes.index);
 var prefixes = ['widgets'];
 prefixes.forEach(function(prefix) {
 	map.mapRoute(app, prefix);

@@ -1,11 +1,14 @@
 var widgets = [{ 
-	id: 1,
-	price: 100.00,
-	descr: 'A widget beyond price'	 
+	widget: {
+		id: 1,
+		name: 'The 1st widget',
+		price: 100.00,
+		descr: 'A widget beyond price'
+	}
 }];
 
 exports.index = function(req, res) {
-	res.send(widgets);
+	res.render('widgets/index', { title: 'Widgets Factory', widgets: widgets });
 };
 
 exports.new = function(req, res) {
@@ -15,13 +18,15 @@ exports.new = function(req, res) {
 exports.create = function(req, res) {
 	var indx = widgets.length + 1;
 	widgets[widgets.length] = {
-		id: indx,
-		name: req.body.widgetname,
-		price: parseFloat(req.body.widgetprice),
-		descr: req.body.widgetdesc
+		widget: {
+			id: indx,
+			name: req.body.widgetname,
+			price: parseFloat(req.body.widgetprice),
+			descr: req.body.widgetdesc
+		}
 	};
-	console.log('Added ' + widgets[indx - 1]);
-	res.render('widgets/added', {title: 'Widget Added', widget: widgets[indx-1]});
+	console.log('Added ' + widgets[indx-1].widget);
+	res.render('widgets/added', {title: 'Widget Added', widget: widgets[indx-1].widget});
 };
 
 exports.show = function(req, res) {
@@ -29,29 +34,34 @@ exports.show = function(req, res) {
 	if (!widgets[indx]) {
 		res.send('There is no widget with id of ' + req.param.id);
 	} else {
-		res.send(widgets[indx]);
+		res.render('widgets/show', {title: 'Show Widget', widget: widgets[indx].widget});
 	}
 };
 
 exports.destroy = function(req, res) {
 	var indx = req.params.id - 1;
-	delete widgets[indx];
+	
 	console.log('deleted ' + req.params.id);
-	res.send('seleted ' + re.params.id);
+	res.send('deleted ' + widgets[indx].widget.name + ' width id ' + widgets[indx].widget.id);
+	delete widgets[indx];
 };
 
 exports.edit = function(req, res) {
-	res.render('widgets/edit');
+	var indx = req.params.id - 1;
+	console.log(widgets[indx].widget)
+	res.render('widgets/edit', { title: 'Edit Widget', widget: widgets[indx].widget });
 };
 
 exports.update = function(req, res) {
 	var indx = parseInt(req.params.id) - 1;
 	widgets[indx] = {
-		id: indx,
-		name: req.body.widgetname,
-		price: parseFloat(req.body.widgetprice),
-		descr: req.body.widgetdesc
+		widget: {
+			id: indx + 1,
+			name: req.body.widgetname,
+			price: parseFloat(req.body.widgetprice),
+			descr: req.body.widgetdesc
+		}	
 	};
 	console.log(widgets[indx]);
-	res.send('Updated ' + req.params.id);
+	res.render('widgets/added', {title: 'Widget Edited', widget: widgets[indx].widget});
 };

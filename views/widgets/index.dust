@@ -1,4 +1,19 @@
 {>layout/}
 {<content}
-<div>{title}</div>
+<table>
+	<tr>
+		<td>ID</td>
+		<td>Price</td>
+		<td>Description</td>
+	</tr>
+	{#widgets}
+		<tr>
+			<td>{widget.id}</td>
+			<td>{widget.price}</td>
+			<td>{widget.descr}</td>
+			<td><a href="/widgets/{widget.id}/edit">Edit</a></td>
+			<td><a href="/widgets/{widget.id}">Delete</a></td>
+		</tr>
+	{/widgets}
+</table>
 {/content}
