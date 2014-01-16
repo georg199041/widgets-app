@@ -42,7 +42,7 @@ exports.destroy = function(req, res) {
 	var indx = req.params.id - 1;
 	
 	console.log('deleted ' + req.params.id);
-	res.send('deleted ' + widgets[indx].widget.name + ' width id ' + widgets[indx].widget.id);
+	res.render('widgets/added', {title: 'Widget Deleted', widget: widgets[indx].widget});
 	delete widgets[indx];
 };
 

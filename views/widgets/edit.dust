@@ -8,7 +8,7 @@
 		<input type="text" pattern="^\$?([0-9]{1,3},([0-9]{3},)*[0-9]{3}|[0-9]+)(.[0-9][0-9]?$)" name="widgetprice" id="widgetprice" size="25" required value="{widget.price}"/>
 	</p>
 	<p>
-		<label>Widget descriptio123n: </label>
+		<label>Widget description: </label>
 		<textarea name="widgetdesc" id="widgetdesc" cols="20" rows="5">{widget.descr}</textarea>
 	</p>
 	<input type="hidden" value="put" name="_method"/>

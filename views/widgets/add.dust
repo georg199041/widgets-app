@@ -9,7 +9,7 @@
 	</p>
 	<p>
 		<label>Widget description: </label>
-		<textarea name="widgetdesc" id="widgetdesc" cols="20" rows="5">Описание отсутствует</textarea>
+		<textarea name="widgetdesc" id="widgetdesc" cols="20" rows="5" placeholder="Описание отсутствует"></textarea>
 	</p>
 	<input type="submit" name="submit" id="submit" value="Submit"/>
 	<input type="reset" name="reset" id="reset" value="Reset"/>

@@ -1,4 +1,5 @@
 <h1>{title} | {widget.name}</h1>
+<a href="/widgets">List</a>
 <ul>
 	<li>ID: {widget.id}</li>
 	<li>Name: {widget.name}</li>
